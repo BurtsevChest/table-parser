@@ -1,0 +1,25 @@
+.CodeViewer {
+   width: 100%;
+   height: 100%;
+   border-radius: 20px;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+   padding: 15px;
+   overflow: hidden;
+   position: relative;
+   // background-color: #272C35;
+
+   &-copyBtn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1;
+
+      &-copied {
+         background: #568909 !important;
+      }
+   }
+
+   &-code {
+      max-height: 100%;
+   }
+}

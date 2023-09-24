@@ -1,0 +1,26 @@
+.InputContainer {
+   height: 100%;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+   border-radius: 20px;
+   padding: 20px;
+   position: relative;
+   // background-color: #272C35;
+   color: black;
+
+   &-content {
+      position: absolute;
+      width: 95%;
+      height: 95%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: auto;
+      outline:none;
+   }
+
+   &-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+   } 
+}

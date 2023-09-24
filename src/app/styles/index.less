@@ -1,0 +1,93 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   border: none;
+
+   &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+   }
+
+   &::-webkit-scrollbar-thumb  {
+      background-color: rgba(205, 205, 205, 0.8);;
+      border-radius: 12px;
+   }
+
+   &::-webkit-scrollbar-track {
+      background: transparent;
+      cursor: pointer;
+   }
+}
+
+body {
+   height: 100vh;
+   // background-color: #141414;
+   // color: white;
+   font-family: cursive;
+}
+
+table {
+   border-collapse: collapse;
+}
+
+.cm-editor {
+   font-size: 16px !important;
+}
+
+td, th {
+   border: 1px solid black !important;
+   padding: 5px 10px;
+}
+
+h1 {
+   // text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #00fe61, 0 0 102px #00fe61, 0 0 115px #00fe61;
+   padding-top: 54px;
+   padding-bottom: 54px;
+   letter-spacing: 10px;
+   text-transform: uppercase;
+}
+
+a {
+   color: #05b !important;
+   cursor: pointer;
+}
+
+#root {
+   height: 100%;
+}
+
+.button {
+   padding: 10px 30px;
+   cursor: pointer;
+   border-radius: 20px;
+   transition: 0.3s;
+   background: rgb(62, 62, 62);
+   color: white;
+
+   &:hover {
+      box-shadow: 0 0 15px rgba(62, 62, 62, 0.5);
+   }
+}
+
+.main-container {
+   height: 600px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+.widjet-container {
+   width: 40%;
+   height: 100%;
+   padding: 6px;
+}
+
+.center-container {
+   width: 100%;
+   text-align: center;
+}
+
+.start-btn {
+   padding: 15px;
+}
