@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import ReactCodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
+import { atomone } from "@uiw/codemirror-theme-atomone";
 import './style.less'
 
 interface ICodeViewerProps {
@@ -31,7 +32,7 @@ const CodeViewer: React.FC<ICodeViewerProps> = ({template}) => {
                lineNumbers: false,
                foldGutter: false
             }}
-            theme={'light'}
+            theme={atomone}
             editable={false}
             value={template}
             height="558px"
