@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://BurtsevChest.github.io/table-parser",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -11,6 +14,7 @@
   },
   "dependencies": {
     "@codemirror/lang-html": "^6.4.6",
+    "@uiw/codemirror-theme-atomone": "^4.21.18",
     "@uiw/react-codemirror": "^4.21.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

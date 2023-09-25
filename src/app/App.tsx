@@ -19,7 +19,7 @@ const App: React.FC<{}> = () => {
 
    return <div className="main-container">
       <div className="center-container">
-         <h1>Table Parser 1.0</h1>
+         <h1 className="neon">Table Parser 1.0</h1>
       </div>
       <div className="widjet-container">
          <InputContainer clearTemplate={onClearTemplate} />

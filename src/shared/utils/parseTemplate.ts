@@ -38,6 +38,8 @@ function postProduction(node: Element): string {
    const resultAfterCheckChild = checkFirstChild(node);
 
    let newresult = resultAfterCheckChild
+   .replace(/<br>/ig,'')
+   .replace(/<\/?div>/ig,'')
    .replace(/&nbsp;/ig,'')
    .replace(/&gt;/ig,'>')
    .replace(/&lt;/ig,'<')
