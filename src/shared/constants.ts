@@ -4,8 +4,7 @@
 const attributesToSave = [
    'rowspan',
    'colspan',
-   'href',
-   'class'
+   'href'
 ];
 
 /**
