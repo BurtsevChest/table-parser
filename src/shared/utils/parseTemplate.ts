@@ -38,14 +38,6 @@ function postProduction(node: Element): string {
    const resultAfterCheckChild = checkFirstChild(node);
 
    let newresult = resultAfterCheckChild
-   .replace(/<br>/ig,'')
-   .replace(/<\/?div>/ig,'')
-   .replace(/&nbsp;/ig,'')
-   .replace(/&gt;/ig,'>')
-   .replace(/&lt;/ig,'<')
-   .replace(/<\/?span>/ig, '')
-   .replace(/<\/?o:p>/ig, '')
-   .replace(/<!--[\s\S]*?-->/ig, '')
    .replace(/<table/ig, '<SbisRuWasaby.pages.Articles.templates.TableScroll>\n\t<ws:addTpl>\n\t\t<table')
    .replace(/<\/table>/ig, '\n\t\t</table>\n\t</ws:addTpl>\n</SbisRuWasaby.pages.Articles.templates.TableScroll>');
 
@@ -75,6 +67,16 @@ export default function(selector: string): string | '' {
       for (let childElement of mainElement?.getElementsByTagName('*')) {
          clearAttributes(childElement);
       }
+
+      mainElement.innerHTML = mainElement.innerHTML
+      .replace(/<br>/ig,'')
+      .replace(/<\/?div>/ig,'')
+      .replace(/&nbsp;/ig,'')
+      .replace(/&gt;/ig,'>')
+      .replace(/&lt;/ig,'<')
+      .replace(/<\/?span>/ig, '')
+      .replace(/<\/?o:p>/ig, '')
+      .replace(/<!--[\s\S]*?-->/ig, '');
 
       // Запускаем кастомные функции для каждого элемента(ну как для каждого, если такая задана)
       for (let childElement of mainElement?.getElementsByTagName('*')) {
