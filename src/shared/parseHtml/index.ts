@@ -37,7 +37,7 @@ function deleteElement(Element: Element) {
  * @param node DOM-елемент
  */
 function clearAttributes(node: Element, attributesToSave: string[]) {
-   for (let name of node.getAttributeNames()) {
+   for (const name of node.getAttributeNames()) {
       if (!attributesToSave.includes(name)) {
          node.removeAttribute(name);
       }
@@ -50,9 +50,7 @@ function clearAttributes(node: Element, attributesToSave: string[]) {
  * @returns 
  */
 function checkFirstChild(node: Element): string {
-   // @ts-ignore
    if (node.children.length === 1 && node.children[0].tagName === 'DIV') {
-      // @ts-ignore
       return node.children[0].innerHTML.trim();
    } else {
       return node.innerHTML;
@@ -79,8 +77,12 @@ const defaultRegexList = [
    /&nbsp;/ig,
    /&gt;/ig,
    /&lt;/ig,
-   /<\/?span>/ig,
-   /<\/?colgroup>/ig,
+   /<\/span>/ig,
+   /<span>/ig,
+   /<u>/ig,
+   /<\/u>/ig,
+   /<\/colgroup>/ig,
+   /<colgroup>/ig,
    /<\/?o:p>/ig,
    /<!--[\s\S]*?-->/ig
 ];
@@ -89,7 +91,7 @@ export default function (Element: Element, config: IParserConfigOptions): string
    if (Element.hasChildNodes()) {
 
       if (config.tagsForDelete?.length) {
-         for (let childElement of Element.getElementsByTagName('*')) {
+         for (const childElement of Element.getElementsByTagName('*')) {
             if (config.tagsForDelete.includes(childElement.tagName.toLowerCase())) {
                deleteElement(childElement);
             }
@@ -97,23 +99,23 @@ export default function (Element: Element, config: IParserConfigOptions): string
       }
 
       if (config.attributesToSave?.length) {
-         for (let childElement of Element.getElementsByTagName('*')) {
+         for (const childElement of Element.getElementsByTagName('*')) {
             clearAttributes(childElement, config.attributesToSave);
          }
       }
 
       // Чистим с помощью регулярок(как будто это текст) некоторые вещи невозможно почистить с помощью узлов например магический тег o:p, который может прилететь из word
-      for (let regex of defaultRegexList) {
+      for (const regex of defaultRegexList) {
          Element.innerHTML = Element.innerHTML.replace(regex, '');
       }
 
       // Запускаем кастомные функции для каждого элемента(ну как для каждого, если такая задана)
-      for (let childElement of Element?.getElementsByTagName('*')) {
+      for (const childElement of Element.getElementsByTagName('*')) {
          config?.nodeFunc?.[childElement.tagName.toLowerCase()]?.(childElement);
       }
 
       // После первичных обработок чистим пустые узлы(а такие могут быmь)
-      for (let childElement of Element.getElementsByTagName('*')) {
+      for (const childElement of Element.getElementsByTagName('*')) {
          if (childElement.innerHTML == '') {
             childElement.remove();
          }
@@ -128,9 +130,9 @@ export default function (Element: Element, config: IParserConfigOptions): string
 
       if (config.newAttrs) {
          // Пробегаемся по css-селекторам и задаем новые атрибуты элементам
-         for (let [selector, attributes] of Object.entries(config.newAttrs)) {
-            for (let elem of Element.querySelectorAll(selector)) {
-               for (let [attrName, attrValue] of Object.entries(attributes)) {
+         for (const [selector, attributes] of Object.entries(config.newAttrs)) {
+            for (const elem of Element.querySelectorAll(selector)) {
+               for (const [attrName, attrValue] of Object.entries(attributes)) {
                   if (attrValue) {
                      elem.setAttribute(attrName, attrValue);
                   } else {

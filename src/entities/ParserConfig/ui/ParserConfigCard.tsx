@@ -18,21 +18,21 @@ const ParserConfigCard: React.FC = () => {
 
    return (
       <>
-         <h1>Настройки</h1>
-         <h2>Атрибуты, которые нужно сохранить</h2>
-         <ul>
+         <h1 className="pb-20 pb-xm-12 pb-sm-8">Настройки</h1>
+         <h2 className="pb-16">Атрибуты, которые нужно сохранить</h2>
+         <ul className="pb-16">
             {config.attributesToSave && config.attributesToSave.map((attribute, id) => (
-               <li key={id}>{attribute}</li>
+               <li className="pb-8" key={id}>{attribute}</li>
             ))}
          </ul>
-         <h2>Новые атрибуты для тегов</h2>
-         <ul>
+         <h2 className="pb-16">Новые атрибуты для тегов</h2>
+         <ul className="pb-16">
             {config.newAttrs && Object.entries(config.newAttrs).map(([tagName, attrList], id) => (
-               <li style={{ paddingBottom: '8px' }} key={id}>
-                  <b>{tagName}</b><br />
-                  <ul>
+               <li className="pb-8" key={id}>
+                  <p className="pb-4"><b>{tagName}</b></p><br />
+                  <ul className="pb-16">
                      {Object.keys(attrList).map((attrName, id) => (
-                        <li style={{ paddingBottom: '8px' }} key={id}>
+                        <li className="pb-8" key={id}>
                            {attrName}: '{
                               //@ts-ignore
                               attrList[attrName]
@@ -43,10 +43,10 @@ const ParserConfigCard: React.FC = () => {
                </li>
             ))}
          </ul>
-         <h2>Теги, которые нужно удалить</h2>
-         <ul>
+         <h2 className="pb-16">Теги, которые нужно удалить</h2>
+         <ul className="pb-16">
             {config.tagsForDelete && config.tagsForDelete.map((tagName, id) => (
-               <li key={id}>{tagName}</li>
+               <li className="pb-8" key={id}>{tagName}</li>
             ))}
          </ul>
       </>
