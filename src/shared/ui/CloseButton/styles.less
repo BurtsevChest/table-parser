@@ -1,0 +1,30 @@
+.CloseButton {
+   position: relative;
+   background-color: transparent;
+   cursor: pointer;
+   transition: 0.3s;
+
+   &:hover {
+      transform: scale(1.1);
+   }
+
+   &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 2px solid white;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(45deg);
+   }
+
+   &::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 2px solid white;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(-45deg);
+   }
+}

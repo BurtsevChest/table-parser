@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import ReactCodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
 import { atomone } from "@uiw/codemirror-theme-atomone";
@@ -6,34 +6,20 @@ import './style.less'
 
 interface ICodeViewerProps {
    template: string;
+   onChange: (data: string) => void;
 }
 
-const CodeViewer: React.FC<ICodeViewerProps> = ({template}) => {
-   const [isPasted, setIsPasted] = useState<boolean>(false);
-
-   const copyToClipboard = () => {
-      navigator.clipboard.writeText(template).then(() => {
-         setIsPasted(true);
-         setTimeout(() => {
-            setIsPasted(false);
-         }, 1000);
-      }, () => {
-         setIsPasted(false);
-      })
-   }
-
+const CodeViewer: React.FC<ICodeViewerProps> = ({template, onChange}) => {
    return <div className="CodeViewer">
-      <button onClick={copyToClipboard} className={`CodeViewer-copyBtn ${isPasted && 'CodeViewer-copyBtn-copied'} button`}>
-         {isPasted ? 'Copied' : 'Copy'}
-      </button>
       <div className="CodeViewer-code">
          <ReactCodeMirror
             basicSetup = {{
                lineNumbers: false,
-               foldGutter: false
+               foldGutter: false,
             }}
             theme={atomone}
-            editable={false}
+            onChange={onChange}
+            editable={true}
             value={template}
             height="558px"
             extensions={[html()]}

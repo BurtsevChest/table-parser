@@ -10,8 +10,9 @@
       height: 8px;
    }
 
-   &::-webkit-scrollbar-thumb  {
-      background-color: rgba(205, 205, 205, 0.8);;
+   &::-webkit-scrollbar-thumb {
+      background-color: rgba(205, 205, 205, 0.8);
+      ;
       border-radius: 12px;
    }
 
@@ -20,7 +21,8 @@
       cursor: pointer;
    }
 
-   font-family: 'Inter', sans-serif;
+   font-family: 'Inter',
+   sans-serif;
 }
 
 @font-face {
@@ -43,12 +45,13 @@ table {
    font-size: 15px !important;
 }
 
-td, th {
+td,
+th {
    border: 1px solid white !important;
    padding: 5px 10px;
 }
 
-h1 {
+.mainHeaderTitle {
    padding-top: 54px;
    padding-bottom: 54px;
    letter-spacing: 10px;
@@ -58,14 +61,14 @@ h1 {
 .neon {
    // text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #00fe61;
    text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.7),
-    0 0 10px rgba(255, 255, 255, 0.7),
-    0 0 20px rgba(255, 255, 255, 0.7),
-    0 0 40px rgba(0, 255, 255, 0.7),
-    0 0 80px rgba(0, 255, 255, 0.7),
-    0 0 90px rgba(0, 255, 255, 0.7),
-    0 0 100px rgba(0, 255, 255, 0.7),
-    0 0 150px rgba(0, 255, 255, 0.7);
+      0 0 5px rgba(255, 255, 255, 0.7),
+      0 0 10px rgba(255, 255, 255, 0.7),
+      0 0 20px rgba(255, 255, 255, 0.7),
+      0 0 40px rgba(0, 255, 255, 0.7),
+      0 0 80px rgba(0, 255, 255, 0.7),
+      0 0 90px rgba(0, 255, 255, 0.7),
+      0 0 100px rgba(0, 255, 255, 0.7),
+      0 0 150px rgba(0, 255, 255, 0.7);
 }
 
 a {
@@ -110,4 +113,14 @@ a {
 
 .start-btn {
    padding: 15px;
+}
+
+.copyBtn {
+   &-copied {
+      background: #568909 !important;
+   }
+}
+
+ul {
+   padding-left: 16px;
 }

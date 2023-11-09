@@ -9,38 +9,39 @@ export default function(anchor: HTMLAnchorElement) {
    const isInsideLanding = /^https:\/\/sbis.ru/.test(anchor.href);
    const isTensor = /^https:\/\/tensor.ru/.test(anchor.href);
 
-   anchor.classList.add('sbis-ru__Articles-link');
+   anchor.classList.add('sbis-ru__Articles_link');
+
    let urlObject: URL;
 
    try {
       urlObject = new URL(anchor.href);
    } catch {
-      alert(`Cannot Create URL, because хватит пехать в текст пометки, что это блять ссылка, и так видим что тут ссылка
-      Даже не надейся увидеть тут красивую валидную верстку, иди дальше путник и верстай ручками`);
+      alert(`
+         Cannot Create URL, because хватит пехать в текст пометки, что это блять ссылка, и так видим что тут ссылка
+         Даже не надейся увидеть тут красивую валидную верстку, иди дальше путник и верстай ручками.
+         А вообще можешь попробовать открыть в GoogleDocs документ, там пометки отделяются от текста не копируются вместе с ним`
+      );
+
       urlObject = new URL('https:sbis.ru/failed_url_check_in_document');
    }
 
-   if(isInsideArticle) {
+   if (isInsideArticle) {
       anchor.href = urlObject.pathname;
       return;
    }
 
-   if(isInsideHelp) {
+   if (isInsideHelp) {
       anchor.href = urlObject.pathname;
       anchor.target = '_blank';
       return;
    }
 
-   if(isInsideLanding) {
+   if (isInsideLanding) {
       anchor.href = urlObject.pathname;
-
-      // Пока отложим, нужно покопаться в Web Components
-      // anchor.innerHTML = getUtmLink(anchor);
-
       return;
    }
 
-   if(isTensor) {
+   if (isTensor) {
       anchor.target = '_blank';
       return;
    }
@@ -48,9 +49,3 @@ export default function(anchor: HTMLAnchorElement) {
    anchor.target = '_blank';
    anchor.rel = 'noopener';
 }
-
-// function getUtmLink(anchor: HTMLAnchorElement): string {
-//    const isBlank = anchor.target === '_blank' ? 'blank={{true}}' : '';
-
-//    return `<SbisRuWasaby.pages.Articles.templates.UtmLink link="${anchor.href}" linkText="${anchor.innerHTML}" ${isBlank}/>`
-// }

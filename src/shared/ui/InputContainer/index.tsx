@@ -1,5 +1,6 @@
 import React from "react";
 import './styles.less';
+import CloseButton from "../CloseButton";
 
 interface IInputContainer {
    clearTemplate: () => void;
@@ -16,7 +17,11 @@ const InputContainer: React.FC<IInputContainer> = ({clearTemplate}) => {
 
    return <div className="InputContainer">
       <div className="InputContainer-content" contentEditable></div>
-      <button onClick={clearHTML} className="InputContainer-button button">Clear Template</button>
+      <div className="InputContainer-close">
+         <CloseButton
+            onClick={clearHTML}
+         />
+      </div>
    </div>
 }
 
