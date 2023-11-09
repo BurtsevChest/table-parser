@@ -5,7 +5,7 @@ import parseHtml from "../shared/parseHtml";
 import sidebar from "../shared/config/sidebar";
 import { useParseConfig } from "../entities/ParserConfig";
 
-const App: React.FC<{}> = () => {
+const App: React.FC = () => {
    const [template, setTemplate] = useState<string>('');
    const [isPasted, setIsPasted] = useState<boolean>(false);
    const {config} = useParseConfig();
@@ -47,7 +47,7 @@ const App: React.FC<{}> = () => {
 
    return <div className="main-container">
       <div className="center-container">
-         <h1 className="mainHeaderTitle neon">Table Parser 1.0</h1>
+         <h1 className="mainHeaderTitle">Table Parser 1.0</h1>
       </div>
       <div className="widjet-container">
          <InputContainer

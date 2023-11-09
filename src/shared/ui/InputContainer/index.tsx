@@ -20,6 +20,8 @@ const InputContainer: React.FC<IInputContainer> = ({clearTemplate}) => {
       <div className="InputContainer-close">
          <CloseButton
             onClick={clearHTML}
+            width="30px"
+            height="30px"
          />
       </div>
    </div>
