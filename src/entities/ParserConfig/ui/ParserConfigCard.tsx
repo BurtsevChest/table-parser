@@ -1,21 +1,20 @@
 import React from "react";
 import { useParseConfig } from "../viewModel/useParseConfig";
-import { IParserConfigOptions } from "../../../shared/parseHtml";
 
 export interface IParserConfigCard {
    onUpdate: () => void;
 }
 
 const ParserConfigCard: React.FC = () => {
-   const { config, setConfig, updateGlobalConfig } = useParseConfig();
+   const { config } = useParseConfig();
 
-   const updateConfig = (cfg: IParserConfigOptions) => {
-      setConfig(cfg);
-   }
+   // const updateConfig = (cfg: IParserConfigOptions) => {
+   //    setConfig(cfg);
+   // }
 
-   const globalUpdate = () => {
-      updateGlobalConfig();
-   }
+   // const globalUpdate = () => {
+   //    updateGlobalConfig();
+   // }
 
    return (
       <>

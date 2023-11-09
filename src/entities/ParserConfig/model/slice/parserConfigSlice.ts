@@ -5,6 +5,7 @@ const parseConfigSlice = createSlice({
    name: 'parseConfig',
    initialState: parserHtml,
    reducers: {
+      // @ts-ignore
       setNewConfig: (state, action) => {
          state = action.payload;
       }
