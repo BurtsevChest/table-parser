@@ -45,32 +45,42 @@ const App: React.FC = () => {
       setTemplate('');
    }
 
-   return <div className="main-container">
-      <div className="center-container">
-         <h1 className="mainHeaderTitle">Table Parser 1.0</h1>
+   return (
+      <div className="main-container">
+         <div className="site-container h-100">
+            <div className="flex flex-column h-100 pb-100">
+               <div>
+                  <h1 className="mainHeaderTitle">Table Converter 1.1</h1>
+               </div>
+               <div className="flex-container flex-max pb-20">
+                  <div className="flex-col flex-col-6 flex-col-xm-12">
+                     <InputContainer
+                        clearTemplate={onClearTemplate}
+                     />
+                  </div>
+                  <div className="flex-col flex-col-6 flex-col-xm-12">
+                  <CodeViewer
+                     onChange={(data: string) => setTemplate(data)}
+                     template={template}
+                  />
+                  </div>
+               </div>
+               <div className="flex flex-column a-items-center">
+                  <div className="pb-16">
+                     {
+                        template ? 
+                        <button onClick={copyToClipboard} className={`copyBtn ${isPasted && 'copyBtn-copied'} button`}> {isPasted ? 'Copied' : 'Copy'} </button>
+                        : <button onClick={start}  className="button" > Start </button>
+                     }
+                  </div>
+                  <div>   
+                     <button onClick={openSettings}  className="button" > Settings </button>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-      <div className="widjet-container">
-         <InputContainer
-            clearTemplate={onClearTemplate}
-         />
-      </div>
-      <div className="widjet-container">
-         <CodeViewer
-            onChange={(data: string) => setTemplate(data)}
-            template={template}
-         />
-      </div>
-      <div className="center-container start-btn">
-         {
-            template ? 
-            <button onClick={copyToClipboard} className={`copyBtn ${isPasted && 'copyBtn-copied'} button`}> {isPasted ? 'Copied' : 'Copy'} </button>
-            : <button onClick={start}  className="button" > Start </button>
-         }
-      </div>
-      <div className="center-container start-btn">   
-         <button onClick={openSettings}  className="button" > Settings </button>
-      </div>
-   </div>
+   )
 }
 
 export default App;

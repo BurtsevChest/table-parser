@@ -1,10 +1,11 @@
+@screen-lg: 1536px;
 @screen-md: 1024px;
 @screen-xm: 800px;
 @screen-sm: 400px;
 
 // Порядки в двух этих переменных должен обязательно соответсвовать друг другу
-@screen-sizes: 1024px, 800px, 400px;
-@screen-prefixes: '-md', '-xm', '-sm';
+@screen-sizes: @screen-lg, @screen-md, @screen-xm, @screen-sm;
+@screen-prefixes: '-lg', '-md', '-xm', '-sm';
 
 .generateStandartColumns(@n, @i: 1) when (@i =< @n) {
   .flex-col-@{i} {
