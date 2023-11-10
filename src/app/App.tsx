@@ -11,9 +11,7 @@ const App: React.FC = () => {
    const {config} = useParseConfig();
 
    const start = () => {
-      // Защита от дурака + предотвращаем кучу ошибок
       if(!template) {
-         // setTemplate(parseTemplate('.InputContainer-content'));
          const element = document.querySelector('.InputContainer-content');
 
          if (element) {
@@ -35,7 +33,7 @@ const App: React.FC = () => {
 
    const openSettings = () => {
       sidebar.open({
-         Component: () => import('../entities/ParserConfig/ui/ParserConfigCard'),
+         Component: () => import('../widgets/Settings/ui/Settings'),
          name: 'configSettings',
          modal: true
       });

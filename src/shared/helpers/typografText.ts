@@ -1,6 +1,24 @@
 import Typograf from "typograf";
 
-export const typograf = new Typograf({locale: ['ru', 'en-US']});
+const typograf = new Typograf({ locale: ['ru', 'en-US'] });
 
-// example
-// console.log(typograf.execute(' На предприятии один сотрудник, работающий по трудовому договору. Оклад — 63 000 руб. Никаких доплат, премий и надбавок нет. Зарплата за первую половину месяца (аванс) рассчитывается по фактически отработанному времени. В отношении выплат производятся удержания по исполнительному листу — 25%. Установленные сроки выплат: аванс — 25 число текущего месяца, зарплата — 10 число следующего месяца. Зарплатные проводки по июньским выплатам будут следующие:   '));
+function parseAnswer(response: string) {
+   response = response.replace(/&gt;/g, '>');
+   response = response.replace(/&lt;/g, '<');
+   response = response.replace(/&amp;/g, '&');
+   response = response.replace(/«/g, '&#171;');
+   response = response.replace(/»/g, '&#187;');
+   response = response.replace(/ /g, '&#160;');
+   response = response.replace(/&nbsp;/g, '&#160;');
+   response = response.replace(/-/g, '&#8209;');
+   response = response.replace(/—/g, '&#8212;');
+   response = response.replace(/&ndash;/g, '&#8211;');
+   response = response.replace(/&times;/g, '&#215;');
+   response = response.replace(/&minus;/g, '&#8722;');
+   return response;
+}
+
+export function parseTypograf(text: string | number) {
+   const tempResult = typograf.execute(text);
+   return parseAnswer(tempResult);
+}

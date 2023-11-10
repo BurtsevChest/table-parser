@@ -1,5 +1,6 @@
 import formatHTML from "../helpers/formatHTML";
-// import { typograf } from "../helpers/typografText";
+// import { parseTypograf } from "../helpers/typografText";
+
 
 export type TParseNodeItem = Record<string, (node: unknown) => void>;
 
@@ -62,12 +63,17 @@ function checkFirstChild(node: Element): string {
  * @param node 
  * @returns 
  */
-function postProduction(node: Element): string {
+function postProduction(node: Element): string {   
    const resultAfterCheckChild = checkFirstChild(node);
+   // const treeWalker = document.createTreeWalker(
+   //    node,
+   //    NodeFilter.SHOW_TEXT,
+   // );
 
-   // let newresult = resultAfterCheckChild
-   // .replace(/<table/ig, '<SbisRuWasaby.pages.Articles.templates.TableScroll>\n\t<ws:addTpl>\n\t\t<table')
-   // .replace(/<\/table>/ig, '\n\t\t</table>\n\t</ws:addTpl>\n</SbisRuWasaby.pages.Articles.templates.TableScroll>');
+   // while (treeWalker.nextNode()) {
+   //    const currentNode = treeWalker.currentNode;
+   //    currentNode.data = parseTypograf(currentNode.data);
+   // }
 
    return formatHTML(resultAfterCheckChild);
 }
@@ -124,7 +130,7 @@ export default function (Element: Element, config: IParserConfigOptions): string
       // // Попытка подрубить типограф
       // for (let childElement of Element.getElementsByTagName('*')) {
       //    if (childElement.nodeType === 3) {
-      //       childElement.textContent = typograf.execute(childElement.textContent);
+      //       childElement.textContent = parseTypograf(childElement.textContent);
       //    }
       // }
 
