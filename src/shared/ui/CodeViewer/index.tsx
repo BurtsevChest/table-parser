@@ -21,7 +21,7 @@ const CodeViewer: React.FC<ICodeViewerProps> = ({template, onChange}) => {
             onChange={onChange}
             editable={true}
             value={template}
-            maxHeight="var(--widget-height)"
+            height="var(--widget-height)"
             extensions={[html()]}
          />
       </div>

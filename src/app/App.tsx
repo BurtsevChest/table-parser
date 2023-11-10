@@ -53,12 +53,12 @@ const App: React.FC = () => {
                   <h1 className="mainHeaderTitle">Table Converter 1.1</h1>
                </div>
                <div className="flex-container flex-max pb-20">
-                  <div className="flex-col flex-col-6 flex-col-xm-12">
+                  <div className="flex-col flex-col-6 flex-col-md-12">
                      <InputContainer
                         clearTemplate={onClearTemplate}
                      />
                   </div>
-                  <div className="flex-col flex-col-6 flex-col-xm-12">
+                  <div className="flex-col flex-col-6 flex-col-md-12">
                   <CodeViewer
                      onChange={(data: string) => setTemplate(data)}
                      template={template}
