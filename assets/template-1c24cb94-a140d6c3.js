@@ -1,0 +1,1 @@
+import{o as a,a as t}from"./index-a47d7b98.js";var n=function(o){var l=o.id,e=o.modal,i=e===void 0||e;return a.createElement("div",{onClick:function(){i&&t.dialogClose(l)},className:"DialogModal-wrapper "+o.wrapperClassName},a.createElement("div",{onClick:function(r){r.stopPropagation()},style:o.styles,className:"DialogModal-body"},o.children))},d=a.memo(n);export{d as default};
