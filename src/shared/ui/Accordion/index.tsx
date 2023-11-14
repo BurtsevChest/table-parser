@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.less';
 
 export interface BaseItem {
    title: string;
@@ -37,12 +38,14 @@ const Accordion: React.FC<IAccordionProps> = ({ TitleTemplate, items, onItemClic
    return (
       <>
          {items && items.map((item, index) => (
-            <div onClick={() => setActiveListItem(index)} key={index}>
+            <div onClick={() => setActiveListItem(index)} key={index} className='Accordion-item'>
                <TitleTemplate
                   title={item.title}
                   active={activeList[index]}
                />
-               {activeList[index] === true && item.ItemTemplate }
+               <div className={'Accordion-item-content ' + (activeList[index] === true ? 'Accordion-item-content-show' : 'Accordion-item-content-hide')}>
+                  {item.ItemTemplate}
+               </div>
             </div>
          ))}
       </>

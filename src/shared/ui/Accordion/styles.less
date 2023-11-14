@@ -1,0 +1,16 @@
+.Accordion-item {
+   overflow: hidden;
+
+   &-content {
+      max-height: 0;
+      &-show {
+         max-height: 1000px;
+         transition: all 2s ease-in-out;
+      }
+
+      &-hide {
+         max-height: 0; overflow: hidden;
+         transition: all 0.5s;
+      }
+   }
+}

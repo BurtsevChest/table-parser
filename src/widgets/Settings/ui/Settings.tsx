@@ -29,7 +29,6 @@ const ParserConfigCard: React.FC<IParserConfigCard> = ({id}) => {
                />
             </div>
             <div className="ParserConfigCard-content flex-max pt-16">
-               <h2 className="pb-16">Новые атрибуты для элементов</h2>
                <NewAttrsList
                   attrList={config.newAttrs}
                />

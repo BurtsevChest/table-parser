@@ -1,0 +1,25 @@
+.AddButton {
+   position: relative;
+   cursor: pointer;
+   background: transparent;
+
+   &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 2px solid white;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+   }
+
+   &::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      border-top: 2px solid white;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(-90deg);
+   }
+}
