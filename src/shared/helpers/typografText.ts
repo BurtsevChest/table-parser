@@ -11,7 +11,7 @@ function parseAnswer(response: string) {
    response = response.replace(/ /g, '&#160;');
    response = response.replace(/&nbsp;/g, '&#160;');
    // response = response.replace(/>(.*?)(-)(.*?)</g, ">$1&#8209;$3<");
-   response = response.replace(/—</g, "&#8212;");
+   response = response.replace(/—/g, "&#8212;");
    response = response.replace(/&ndash;/g, '&#8211;');
    response = response.replace(/&times;/g, '&#215;');
    response = response.replace(/&minus;/g, '&#8722;');

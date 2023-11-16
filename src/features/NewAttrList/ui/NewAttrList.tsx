@@ -21,7 +21,7 @@ export interface IItem {
 const NewAttrsList: React.FC = () => {
    const { newAttrs, updateNewAttrs } = useParseConfig();
 
-   const onItemUpdate = ({ attr, value }) => {
+   const onItemUpdate = () => {
       updateNewAttrs(
          {
             ...newAttrs,
