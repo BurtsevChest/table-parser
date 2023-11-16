@@ -7,8 +7,8 @@ export interface ICloseButtonProps {
    onClick?: () => void;
 }
 
-const CloseButton: React.FC<ICloseButtonProps> = ({width = '24px', height = '24px', onClick}) => {
-   return(
+const CloseButton: React.FC<ICloseButtonProps> = ({ width = '24px', height = '24px', onClick }) => {
+   return (
       <button style={{ width, height }} className='CloseButton' onClick={onClick}></button>
    );
 }

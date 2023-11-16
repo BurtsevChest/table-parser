@@ -6,10 +6,10 @@ interface IInputContainer {
    clearTemplate: () => void;
 }
 
-const InputContainer: React.FC<IInputContainer> = ({clearTemplate}) => {
+const InputContainer: React.FC<IInputContainer> = ({ clearTemplate }) => {
    const clearHTML = () => {
       const elem = document.querySelector('.InputContainer-content');
-      if(elem) {
+      if (elem) {
          elem.innerHTML = '';
          clearTemplate();
       }

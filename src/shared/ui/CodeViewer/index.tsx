@@ -9,11 +9,11 @@ interface ICodeViewerProps {
    onChange: (data: string) => void;
 }
 
-const CodeViewer: React.FC<ICodeViewerProps> = ({template, onChange}) => {
+const CodeViewer: React.FC<ICodeViewerProps> = ({ template, onChange }) => {
    return <div className="CodeViewer">
       <div className="CodeViewer-code">
          <ReactCodeMirror
-            basicSetup = {{
+            basicSetup={{
                lineNumbers: false,
                foldGutter: false,
             }}
