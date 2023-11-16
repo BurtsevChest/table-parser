@@ -1,8 +1,9 @@
 import React from "react";
-import { useParseConfig } from "../../../entities/ParserConfig";
 import CloseButton from "../../../shared/ui/CloseButton";
 import sidebar from "../../../shared/config/sidebar";
 import { NewAttrsList } from "../../../features/NewAttrList";
+import { TagsForDelete } from "../../../features/TagsForDelete";
+import { AttrsToSave } from "../../../features/AttrsToSave";
 import './styles.less';
 
 export interface IParserConfigCard {
@@ -12,9 +13,7 @@ export interface IParserConfigCard {
 /**
  * Виджет настроек конвертера
  */
-const ParserConfigCard: React.FC<IParserConfigCard> = ({id}) => {
-   const { config } = useParseConfig();
-
+const ParserConfigCard: React.FC<IParserConfigCard> = ({ id }) => {
    const onCloseBtnClick = () => {
       sidebar.close(id);
    }
@@ -29,10 +28,13 @@ const ParserConfigCard: React.FC<IParserConfigCard> = ({id}) => {
                />
             </div>
             <div className="ParserConfigCard-content flex-max pt-16">
-               <h2 className="pb-16">Новые атрибуты для элементов</h2>
-               <NewAttrsList
-                  attrList={config.newAttrs}
-               />
+               <AttrsToSave />
+               <div className="pb-32 pb-xm-24">
+                  <NewAttrsList />
+               </div>
+               <div>
+                  <TagsForDelete />
+               </div>
             </div>
          </div>
       </>

@@ -4,6 +4,7 @@ import CodeViewer from "../shared/ui/CodeViewer";
 import parseHtml from "../shared/parseHtml";
 import sidebar from "../shared/config/sidebar";
 import { useParseConfig } from "../entities/ParserConfig";
+import nodeFunc from "../shared/config/parserHtml/nodeFunc";
 
 const App: React.FC = () => {
    const [template, setTemplate] = useState<string>('');
@@ -15,7 +16,7 @@ const App: React.FC = () => {
          const element = document.querySelector('.InputContainer-content');
 
          if (element) {
-            setTemplate(parseHtml(element, config));
+            setTemplate(parseHtml(element, config, nodeFunc));
          }
       }
    }
@@ -57,10 +58,10 @@ const App: React.FC = () => {
                      />
                   </div>
                   <div className="flex-col flex-col-6 flex-col-md-12">
-                  <CodeViewer
-                     onChange={(data: string) => setTemplate(data)}
-                     template={template}
-                  />
+                     <CodeViewer
+                        onChange={(data: string) => setTemplate(data)}
+                        template={template}
+                     />
                   </div>
                </div>
                <div className="flex flex-column a-items-center">

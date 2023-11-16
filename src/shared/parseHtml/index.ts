@@ -1,16 +1,18 @@
 import formatHTML from "../helpers/formatHTML";
-// import { parseTypograf } from "../helpers/typografText";
-
+import { parseTypograf } from "../helpers/typografText";
 
 export type TParseNodeItem = Record<string, (node: unknown) => void>;
 
 export type TNewNodeAttrs = Record<string, object>;
 
+export type TTagsForDelete = string[];
+
+export type TAttributesToSave = string[];
+
 export interface IParserConfigOptions {
-   nodeFunc?: TParseNodeItem;
    newAttrs?: TNewNodeAttrs;
-   attributesToSave?: string[];
-   tagsForDelete?: string[];
+   attributesToSave?: TAttributesToSave;
+   tagsForDelete?: TTagsForDelete;
 }
 
 /**
@@ -65,6 +67,7 @@ function checkFirstChild(node: Element): string {
  */
 function postProduction(node: Element): string {   
    const resultAfterCheckChild = checkFirstChild(node);
+
    // const treeWalker = document.createTreeWalker(
    //    node,
    //    NodeFilter.SHOW_TEXT,
@@ -73,9 +76,10 @@ function postProduction(node: Element): string {
    // while (treeWalker.nextNode()) {
    //    const currentNode = treeWalker.currentNode;
    //    currentNode.data = parseTypograf(currentNode.data);
+   //    console.log(currentNode.data);
    // }
 
-   return formatHTML(resultAfterCheckChild);
+   return formatHTML(parseTypograf(resultAfterCheckChild));
 }
 
 const defaultRegexList = [
@@ -93,7 +97,7 @@ const defaultRegexList = [
    /<!--[\s\S]*?-->/ig
 ];
 
-export default function (Element: Element, config: IParserConfigOptions): string {
+export default function (Element: Element, config: IParserConfigOptions, nodeFunc?: TParseNodeItem): string {
    if (Element.hasChildNodes()) {
 
       if (config.tagsForDelete?.length) {
@@ -117,7 +121,7 @@ export default function (Element: Element, config: IParserConfigOptions): string
 
       // Запускаем кастомные функции для каждого элемента(ну как для каждого, если такая задана)
       for (const childElement of Element.getElementsByTagName('*')) {
-         config?.nodeFunc?.[childElement.tagName.toLowerCase()]?.(childElement);
+         nodeFunc?.[childElement.tagName.toLowerCase()]?.(childElement);
       }
 
       // После первичных обработок чистим пустые узлы(а такие могут быmь)
@@ -126,13 +130,6 @@ export default function (Element: Element, config: IParserConfigOptions): string
             childElement.remove();
          }
       }
-
-      // // Попытка подрубить типограф
-      // for (let childElement of Element.getElementsByTagName('*')) {
-      //    if (childElement.nodeType === 3) {
-      //       childElement.textContent = parseTypograf(childElement.textContent);
-      //    }
-      // }
 
       if (config.newAttrs) {
          // Пробегаемся по css-селекторам и задаем новые атрибуты элементам

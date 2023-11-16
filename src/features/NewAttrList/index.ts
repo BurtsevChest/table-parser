@@ -1,6 +1,3 @@
-import NewAttrsList, {INewAttrsListProps} from "./ui/NewAttrList";
+import NewAttrsList from "./ui/NewAttrList";
 
-export {
-   NewAttrsList,
-   type INewAttrsListProps
-}
+export { NewAttrsList }

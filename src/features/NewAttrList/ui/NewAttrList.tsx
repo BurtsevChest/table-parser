@@ -1,8 +1,8 @@
 import React from 'react';
-import Accordion, { BaseItem } from '../../../shared/ui/Accordion';
-import { TNewNodeAttrs } from '../../../shared/parseHtml';
+import Accordion from '../../../shared/ui/Accordion';
 import { prepareDataForAccordion } from '../lib/dataAdapter';
 import TitleTemplate from './TitleTemplate';
+import { useParseConfig } from '../../../entities/ParserConfig';
 import './styles.less';
 
 export interface IItem {
@@ -13,27 +13,30 @@ export interface IItem {
    }[]
 }
 
-export interface INewAttrsListProps {
-   attrList: TNewNodeAttrs | undefined;
-}
-
 /**
  * Компонент для изменения списка атрибутов для элементов
  * @param attrlist TNewNodeAttrs | undefined 
  * @returns 
  */
-const NewAttrsList: React.FC<INewAttrsListProps> = ({ attrList }) => {
-   const [list, setList] = React.useState<BaseItem[]>([]);
+const NewAttrsList: React.FC = () => {
+   const { newAttrs, updateNewAttrs } = useParseConfig();
 
-   React.useEffect(() => {
-      setList(prepareDataForAccordion(attrList || {}));
-   }, [attrList]);
+   const onItemUpdate = ({ attr, value }) => {
+      updateNewAttrs(
+         {
+            ...newAttrs,
+         }
+      )
+   }
+
+   const attrsForAccordion = prepareDataForAccordion(useParseConfig().newAttrs || {}, onItemUpdate);
 
    return (
       <div>
+         <h2 className="pb-16">Новые атрибуты для элементов</h2>
          <Accordion
             TitleTemplate={TitleTemplate}
-            items={list}
+            items={attrsForAccordion}
          />
       </div>
    );

@@ -1,23 +1,11 @@
 import { getParseConfig } from "../model/selectors";
 import { parseConfigActions } from "../model/slice/parserConfigSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { TNewNodeAttrs, TTagsForDelete, TAttributesToSave } from "../../../shared/parseHtml";
+import { TAttributesToSave } from "../../../shared/parseHtml";
 
-export const useParseConfig = () => {
-   const config = useSelector(getParseConfig);
+export const useAttributesToSave = () => {
+   const attributesToSave = useSelector(getParseConfig).attributesToSave;
    const dispatch = useDispatch();
-
-   const updateGlobalConfig = () => {
-      dispatch(parseConfigActions.setNewConfig(config));
-   }
-
-   const updateNewAttrs = (list: TNewNodeAttrs) => {
-      dispatch(parseConfigActions.setNewAttrList(list));
-   }
-
-   const updateTagsForDelete = (tags: TTagsForDelete) => {
-      dispatch(parseConfigActions.setNewTagsForDelete(tags));
-   }
 
    const updateAttributesToSave = (attrs: TAttributesToSave) => {
       dispatch(parseConfigActions.setNewAttrsToSave(attrs));
@@ -36,13 +24,7 @@ export const useParseConfig = () => {
    }
 
    return {
-      config,
-      updateGlobalConfig,
-      newAttrs: config.newAttrs,
-      tagsForDelete: config.tagsForDelete,
-      attributesToSave: config.attributesToSave,
-      updateNewAttrs,
-      updateTagsForDelete,
+      attributesToSave,
       updateAttributesToSave,
       addAttributeToSave,
       deleteAttributeToSave,
