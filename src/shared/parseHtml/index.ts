@@ -138,7 +138,7 @@ export default function (Element: Element, config: IParserConfigOptions, nodeFun
                for (const [attrName, attrValue] of Object.entries(attributes)) {
                   if (attrValue) {
                      elem.setAttribute(attrName, attrValue);
-                  } else {
+                  } else if(attrName !== 'saveAll') {
                      elem.removeAttribute(attrName);
                   }
                }

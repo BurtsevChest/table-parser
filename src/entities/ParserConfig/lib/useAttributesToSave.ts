@@ -19,8 +19,8 @@ export const useAttributesToSave = () => {
       dispatch(parseConfigActions.changeNewAttrsToSave(attribute));
    }
 
-   const deleteAttributeToSave = (index: number) => {
-      dispatch(parseConfigActions.deleteNewAttrsToSave(index));
+   const deleteAttributeToSave = (attrName: string) => {
+      dispatch(parseConfigActions.deleteNewAttrsToSave(attrName));
    }
 
    return {

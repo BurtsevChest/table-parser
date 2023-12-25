@@ -9,9 +9,14 @@ export interface IAddButton {
    className?: string;
 }
 
-const AddButton: React.FC<IAddButton> = ({ onClick, width = '24px', height = '24px', styles, className }) => {
+const AddButton: React.FC<IAddButton> = ({ onClick, width = '20px', height = '20px', styles, className }) => {
    return (
-      <button className={'AddButton ' + className || ''} style={{ width, height, ...styles }} onClick={onClick}></button>
+      <button
+         className={'AddButton ' + className || ''}
+         style={{ width, height, ...styles }}
+         onClick={onClick}
+      >
+      </button>
    );
 }
 

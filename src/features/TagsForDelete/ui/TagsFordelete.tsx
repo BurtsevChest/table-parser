@@ -8,8 +8,8 @@ const TagsForDelete: React.FC = () => {
       <>
          <h2 className='pb-16'>Тэги, которые нужно удалить</h2>
          <ul>
-            {tagsForDelete && tagsForDelete.map((tagName, index) => (
-               <li key={index} className='pb-4'>
+            {tagsForDelete && tagsForDelete.map((tagName) => (
+               <li key={tagName} className='pb-4'>
                   <p>{tagName}</p>
                </li>
             ))}

@@ -27,7 +27,7 @@ const parseConfigSlice = createSlice({
          });
       },
       deleteNewAttrsToSave: (state, action) => {
-         state.attributesToSave = state.attributesToSave?.filter((_, index) => index !== action.payload);
+         state.attributesToSave = state.attributesToSave?.filter((attrName) => attrName !== action.payload);
       },
       setNewTagsForDelete: (state, action) => {
          state.tagsForDelete = action.payload;

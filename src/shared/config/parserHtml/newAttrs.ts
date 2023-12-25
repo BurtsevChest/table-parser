@@ -57,5 +57,5 @@ export default {
    },
    'h4': {
       class: 'sbis_ru-header-h4 sbis-ru__Articles--pb8',
-   },
+   }
 }

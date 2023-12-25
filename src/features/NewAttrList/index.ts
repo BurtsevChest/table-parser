@@ -1,3 +1,1 @@
-import NewAttrsList from "./ui/NewAttrList";
-
-export { NewAttrsList }
+export { default as NewAttrsList } from "./ui/NewAttrList";

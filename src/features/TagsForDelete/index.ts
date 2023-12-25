@@ -1,3 +1,1 @@
-import TagsForDelete from "./ui/TagsFordelete";
-
-export { TagsForDelete }
+export { default as TagsForDelete } from "./ui/TagsFordelete";

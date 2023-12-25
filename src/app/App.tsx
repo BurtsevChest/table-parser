@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import InputContainer from "../shared/ui/InputContainer";
 import CodeViewer from "../shared/ui/CodeViewer";
 import parseHtml from "../shared/parseHtml";
-import sidebar from "../shared/config/sidebar";
 import { useParseConfig } from "../entities/ParserConfig";
 import nodeFunc from "../shared/config/parserHtml/nodeFunc";
+import { openSettings } from "../widgets/Settings";
 
 const App: React.FC = () => {
    const [template, setTemplate] = useState<string>('');
@@ -29,14 +29,6 @@ const App: React.FC = () => {
          }, 1000);
       }, () => {
          setIsPasted(false);
-      });
-   }
-
-   const openSettings = () => {
-      sidebar.open({
-         Component: () => import('../widgets/Settings/ui/Settings'),
-         name: 'configSettings',
-         modal: true
       });
    }
 

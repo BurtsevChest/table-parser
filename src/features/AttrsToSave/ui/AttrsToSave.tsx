@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAttributesToSave } from '../../../entities/ParserConfig';
 import confirmDelete from '../../confirmDelete';
-import CloseButton from '../../../shared/ui/CloseButton';
+import AddButton from '../../../shared/ui/AddButton';
 import dialog from '../../../shared/config/dialog';
 
 const AttrsToSave: React.FC = () => {
@@ -23,19 +23,19 @@ const AttrsToSave: React.FC = () => {
 
    return (
       <div className="pb-32 pb-xm-24">
-         <div className="flex">
-            <h2 className='pb-16'>Атрибуты, которые нужно сохранить</h2>
-            <CloseButton
+         <div className="flex pb-16 a-items-center">
+            <h2>Атрибуты, которые нужно сохранить</h2>
+            <AddButton
+               className='ml-8'
                onClick={openAddDialog}
             />
          </div>
          <div className='flex-container'>
-            {attributesToSave && attributesToSave.map((tagName, index) => (
-               <div key={index} className='pointer flex-col flex-col-4'>
+            {attributesToSave && attributesToSave.map((value, index) => (
+               <div key={value} className='pointer flex-col flex-col-4'>
                   <ItemTemplate
                      index={index}
-                     key={index}
-                     title={tagName}
+                     title={value}
                      changeNewAttrsToSave={changeNewAttrsToSave}
                      deleteAttributeToSave={deleteAttributeToSave}
                   />
@@ -55,7 +55,7 @@ const ItemTemplate = ({
    title: string;
    index: number;
    changeNewAttrsToSave: ({ index, value }: { index: number; value: string }) => void;
-   deleteAttributeToSave: (item: number) => void;
+   deleteAttributeToSave: (attrName: string) => void;
 }) => {
    const [isInput, setIsInput] = useState<boolean>(false);
    const [value, setValue] = useState<string>(title);
@@ -77,7 +77,7 @@ const ItemTemplate = ({
       confirmDelete({
          title: 'Удалить элемент?',
          onDelete: () => {
-            deleteAttributeToSave(index);
+            deleteAttributeToSave(value);
             setIsInput(false);
             setValue(title);
          }
