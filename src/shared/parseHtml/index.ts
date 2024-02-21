@@ -3,14 +3,20 @@ import { parseTypograf } from "../helpers/typografText";
 
 export type TParseNodeItem = Record<string, (node: unknown) => void>;
 
-export type TNewNodeAttrs = Record<string, object>;
+export type TNewNodeAttrs = {
+   selector: string;
+   attrList: {
+      name: string;
+      value: string;
+   }[];
+};
 
 export type TTagsForDelete = string[];
 
 export type TAttributesToSave = string[];
 
 export interface IParserConfigOptions {
-   newAttrs?: TNewNodeAttrs;
+   newAttrs?: TNewNodeAttrs[];
    attributesToSave?: TAttributesToSave;
    tagsForDelete?: TTagsForDelete;
 }
@@ -65,21 +71,8 @@ function checkFirstChild(node: Element): string {
  * @param node 
  * @returns 
  */
-function postProduction(node: Element): string {   
-   const resultAfterCheckChild = checkFirstChild(node);
-
-   // const treeWalker = document.createTreeWalker(
-   //    node,
-   //    NodeFilter.SHOW_TEXT,
-   // );
-
-   // while (treeWalker.nextNode()) {
-   //    const currentNode = treeWalker.currentNode;
-   //    currentNode.data = parseTypograf(currentNode.data);
-   //    console.log(currentNode.data);
-   // }
-
-   return formatHTML(parseTypograf(resultAfterCheckChild));
+function postProduction(node: Element): string {
+   return formatHTML(parseTypograf(checkFirstChild(node)));
 }
 
 const defaultRegexList = [
@@ -132,14 +125,13 @@ export default function (Element: Element, config: IParserConfigOptions, nodeFun
       }
 
       if (config.newAttrs) {
-         // Пробегаемся по css-селекторам и задаем новые атрибуты элементам
-         for (const [selector, attributes] of Object.entries(config.newAttrs)) {
+         for (const { selector, attrList } of config.newAttrs) {
             for (const elem of Element.querySelectorAll(selector)) {
-               for (const [attrName, attrValue] of Object.entries(attributes)) {
-                  if (attrValue) {
-                     elem.setAttribute(attrName, attrValue);
-                  } else if(attrName !== 'saveAll') {
-                     elem.removeAttribute(attrName);
+               for (const { name, value } of attrList) {
+                  if (value) {
+                     elem.setAttribute(name, value);
+                  } else {
+                     elem.removeAttribute(name);
                   }
                }
             }

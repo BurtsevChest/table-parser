@@ -1,7 +1,6 @@
 import React from "react";
 import CloseButton from "../../../shared/ui/CloseButton";
 import sidebar from "../../../shared/config/sidebar";
-import { NewAttrsList } from "../../../features/NewAttrList";
 import { TagsForDelete } from "../../../features/TagsForDelete";
 import { AttrsToSave } from "../../../features/AttrsToSave";
 import './styles.less';
@@ -28,9 +27,8 @@ const ParserConfigCard: React.FC<IParserConfigCard> = ({ id }) => {
                />
             </div>
             <div className="ParserConfigCard-content flex-max pt-16">
-               <AttrsToSave />
-               <div className="pb-32 pb-xm-24">
-                  <NewAttrsList />
+               <div>
+                  <AttrsToSave />
                </div>
                <div>
                   <TagsForDelete />

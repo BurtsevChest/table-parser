@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import parserConfig from "../../shared/config/parserHtml";
-import { IParserConfigOptions } from "../../shared/parseHtml";
-import * as store from "../../shared/helpers/localStorage";
+import parserConfig from "../../../shared/config/parserHtml";
+import { IParserConfigOptions } from "../../../shared/parseHtml";
+import * as store from "../../../shared/helpers/localStorage";
 
 const LOCAL_STORAGE_KEY = 'parserConfig';
 
